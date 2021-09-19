@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SRCH Client</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="js/stack.js"></script>
+    <script defer src="js/theme.js"></script>
+    <script defer src="js/screens/home.js"></script>
+    <script defer src="js/screens/popup.js"></script>
+    <script defer src="js/screens/category/category_profile.js"></script>
+    <script defer src="js/screens/category/category_runs.js"></script>
+    <script defer src="js/screens/game/game_categories.js"></script>
+    <script defer src="js/screens/game/game_levels.js"></script>
+    <script defer src="js/screens/game/game_menu.js"></script>
+    <script defer src="js/screens/game/game_profile.js"></script>
+    <script defer src="js/screens/generic/generic_api.js"></script>
+    <script defer src="js/screens/generic/generic_menu.js"></script>
+    <script defer src="js/screens/level/level_profile.js"></script>
+    <script defer src="js/screens/level/level_runs.js"></script>
+    <script defer src="js/screens/user/user_games.js"></script>
+    <script defer src="js/screens/user/user_menu.js"></script>
+    <script defer src="js/screens/user/user_profile.js"></script>
+    <script defer src="js/screens/user/user_runs.js"></script>
+    <script defer src="js/utils/api.js"></script>
+    <script defer src="js/utils/gradient.js"></script>
+    <script defer src="js/utils/platform.js"></script>
+    <script defer src="js/utils/run.js"></script>
+    <script defer src="js/utils/sort.js"></script>
+    <script defer src="js/utils/string.js"></script>
+    <script defer src="js/utils/tree.js"></script>
+    <script defer src="js/utils/user.js"></script>
+  </head>
+  <body style="font-family:sans-serif" class="light" onload="display_home()">
+    <h1 style="text-align:center">SRCH Client</h1>
+    <div id="header" style="text-align:center">
+      <button id="user-button" class="light link" onclick="display_user_api_menu()">User Search</button> &bull;
+      <button id="game-button" class="light link" onclick="display_game_api_menu()">Game Search</button> &bull;
+      <button id="generic-button" class="light link" onclick="display_generic_api()">Generic API Search</button> &bull;
+      <span class="xlight light"><button class="link" onclick="dark()">Dark Mode</button></span>
+      <span class="xdark light"><button class="link" onclick="light()">Light Mode</button></span> &bull;
+      <a href="" target="_blank">GitHub</a>
+    </div>
+    <div id="screen"></div>
+  </body>
+</html>
