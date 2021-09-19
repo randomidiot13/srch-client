@@ -1,9 +1,25 @@
 async function load_level_runs_inner(levelID) {
   disp(`<p style="text-align:center">Fetching level...</p>`);
-  levelObj = await json_from_src_await(`/levels/${levelID}?embed=categories,variables`);
+  try {
+    levelObj = await json_from_src_await(`/levels/${levelID}?embed=categories,variables`);
+  }
+  catch (e) {
+    let output = back_header(`Runs in ${escape(levelID)}`) + 
+                 `<p style="text-align:center">Could not find level ${escape(levelID)}.</p>`;
+    disp(await output);
+    return;
+  }
   let levelName = levelObj.data.name;
   disp(`<p style="text-align:center">Fetching runs...</p>`);
-  levelRuns = await continual_data_await_fast_reverse(`/runs?level=${levelID}&embed=game,category.variables,players,platform`, 5000);
+  try {
+    levelRuns = await continual_data_await_fast_reverse(`/runs?level=${levelID}&embed=game,category.variables,players,platform`, 5000);
+  }
+  catch (e) {
+    let output = back_header(`Runs in ${escape(await levelName)}`) + 
+                 `<p style="text-align:center">An error occurred while fetching ${escape(await levelName)}'s runs.</p>`;
+    disp(await output);
+    return;
+  }
   if (levelRuns.length === 0) {
     let output = back_header(`Runs in ${escape(await levelName)}`) + 
                  `<p style="text-align:center">${escape(await levelName)} does not have any runs.</p>`;
