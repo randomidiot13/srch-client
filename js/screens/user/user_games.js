@@ -10,7 +10,15 @@ function load_user_games_inner(userID) {
     return;
   }
   let userName = escape(userObj.data.names.international);
-  let userGames = continual_data(`/games?moderator=${userID}`, xhr);
+  try {
+    var userGames = continual_data(`/games?moderator=${userID}`, xhr);
+  }
+  catch (e) {
+    let output = back_header(`Games moderated by ${userName}`) +
+                 `<p style="text-align:center">An error occured while fetching ${userName}'s games.</p>`;
+    disp(output);
+    return;
+  }
   let gameButtons = userGames.map((game, i) => `<tr>` +
                                                  `<td style="text-align:right">${i + 1}.` +
                                                  `<td>` +
